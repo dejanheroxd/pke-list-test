@@ -2,13 +2,14 @@ import Card from "./components/Card";
 import SelectPokemon from "./components/SelectPokemon";
 import PokeControll from "./components/PokeControll";
 import { useEffect, useState } from "react";
+import styles from "./App.module.css";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemon, setPokemon] = useState(1);
   const [pokeChar, setPokeChar] = useState([]);
   const [pokemonNumber, setPokemonNumber] = useState(1);
-  console.log(pokemon);
+  console.log(pokemonNumber);
 
   useEffect(() => {
     async function fetchPokemonList() {
@@ -63,12 +64,38 @@ function App() {
     fetchPokeChar();
   }, [pokemonNumber]);
 
+  function handleSelectPokemon(number) {
+    setPokemonNumber(number);
+  }
+
+  function handleNextPokemon() {
+    if (pokemonList.length > pokemonNumber) {
+      setPokemonNumber((prevNum) => prevNum + 1);
+    } else {
+      setPokemonNumber(1);
+    }
+  }
+
+  function handlePrevPokemon() {
+    if (pokemonNumber > 1) {
+      setPokemonNumber((prevNum) => prevNum - 1);
+    } else if (pokemonNumber === 1) {
+      setPokemonNumber(pokemonList.length);
+    }
+  }
+
   return (
     <div>
-      <div>
-        <SelectPokemon pokemonList={pokemonList} />
+      <div className={styles.pokemonApp}>
+        <SelectPokemon
+          pokemonList={pokemonList}
+          onSelectPokemon={handleSelectPokemon}
+        />
         <Card pokemon={pokemon} />
-        <PokeControll />
+        <PokeControll
+          onPrevPokemon={handlePrevPokemon}
+          onNextPokemon={handleNextPokemon}
+        />
       </div>
     </div>
   );

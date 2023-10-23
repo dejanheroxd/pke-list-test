@@ -3,3 +3,7 @@ button {
   height: 35px;
   margin-top: 20.5rem;
 }
+
+button:hover {
+  cursor: pointer;
+}

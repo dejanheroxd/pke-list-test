@@ -7,4 +7,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
+}
+
+.cardImgContainer {
+  height: 160px;
+  width: 160px;
+  border: 2px solid rgb(204, 204, 204);
+  border-radius: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(239, 239, 239);
+}
+
+img {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+}
+
+.pokemonName {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: rgb(82, 82, 82);
+  margin-top: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+
+p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
